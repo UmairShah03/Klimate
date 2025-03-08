@@ -42,7 +42,7 @@ const CitySearch = () => {
     <>
       <Button
         variant={"outline"}
-        className="relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg-w-64"
+        className="relative w-36 sm:w-48 md:w-60 lg:w-64 justify-start text-sm text-muted-foreground"
         onClick={() => setOpen(true)}
       >
         <Search className="mr-2 h-4 w-4" />
