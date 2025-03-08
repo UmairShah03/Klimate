@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/theme-provider";
 import WeatherDashboard from "./pages/WeatherDashboard";
 import CityPage from "./pages/CityPage";
@@ -23,7 +23,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark">
-        <BrowserRouter>
+        <HashRouter>
           <Layout>
             <Routes>
               <Route path="/" element={<WeatherDashboard />} />
@@ -31,7 +31,7 @@ const App = () => {
             </Routes>
           </Layout>
           <Toaster richColors />
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
