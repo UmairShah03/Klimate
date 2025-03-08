@@ -51,20 +51,23 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
           <p className="font-medium">
             {format(new Date(day.date * 1000), "EEE, MMM d")}
           </p>
-          <p className="font-sm text-muted-foreground capitalize">
+          <p className="text-sm text-muted-foreground capitalize">
             {day.weather.description}
           </p>
         </div>
-        <div className="flex justify-center  gap-4">
+
+        {/* Fix: Added `flex-col sm:flex-row` for better mobile spacing */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
           <span className="flex items-center text-blue-500">
             <ArrowDown className="w-4 h-4 mr-1" />
             {formatTemp(day.temp_min)}
           </span>
           <span className="flex items-center text-red-500">
-            <ArrowUp className="w-4 h-4 text-blue-500" />
-            {formatTemp(day.temp_min)}
+            <ArrowUp className="w-4 h-4 mr-1" />
+            {formatTemp(day.temp_max)} {/* Fixed this to show max temp */}
           </span>
         </div>
+
         <div className="flex justify-end gap-4">
           <span className="flex items-center gap-1">
             <Droplets className="h-4 w-4 text-blue-500" />
