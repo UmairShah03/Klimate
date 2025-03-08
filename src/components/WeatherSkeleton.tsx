@@ -3,7 +3,7 @@ import { Skeleton } from "./ui/skeleton";
 const WeatherSkeleton = () => {
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 grid-cols-4 ">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-4">
         <Skeleton className="w-full rounded-lg h-32" />
         <Skeleton className="w-full rounded-lg h-32" />
         <Skeleton className="w-full rounded-lg h-32" />

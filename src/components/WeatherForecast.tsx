@@ -45,7 +45,7 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
     return (
       <div
         key={day.date}
-        className="grid grid-cols-3 items-center gap-4 rounded-lg border p-4"
+        className="grid grid-cols-3 items-center gap-4 rounded-lg border p-4 min-w-[200px]"
       >
         <div>
           <p className="font-medium">
@@ -56,26 +56,29 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
           </p>
         </div>
 
-        {/* Fix: Added `flex-col sm:flex-row` for better mobile spacing */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
-          <span className="flex items-center text-blue-500">
-            <ArrowDown className="w-4 h-4 mr-1" />
-            {formatTemp(day.temp_min)}
-          </span>
-          <span className="flex items-center text-red-500">
-            <ArrowUp className="w-4 h-4 mr-1" />
-            {formatTemp(day.temp_max)} {/* Fixed this to show max temp */}
-          </span>
+        {/* Temperature Section: High above, Low below on mobile */}
+        <div className="flex flex-col items-center sm:flex-row justify-center gap-2 sm:gap-4">
+          <div className="flex flex-col items-center text-center">
+            <span className="flex items-center text-red-500">
+              <ArrowUp className="w-4 h-4 mr-1" />
+              {formatTemp(day.temp_max)}
+            </span>
+            <span className="flex items-center text-blue-500">
+              <ArrowDown className="w-4 h-4 mr-1" />
+              {formatTemp(day.temp_min)}
+            </span>
+          </div>
         </div>
 
-        <div className="flex justify-end gap-4">
-          <span className="flex items-center gap-1">
-            <Droplets className="h-4 w-4 text-blue-500" />
-            {day.humidity}%
-          </span>
-          <span className="flex items-center gap-1">
+        {/* Wind & Humidity Section: Side by side on mobile too */}
+        <div className="flex flex-row justify-center gap-4 sm:justify-end">
+          <span className="flex flex-col items-center gap-1">
             <Wind className="h-4 w-4 text-blue-500" />
             {day.wind}%
+          </span>
+          <span className="flex flex-col items-center gap-1">
+            <Droplets className="h-4 w-4 text-blue-500" />
+            {day.humidity}%
           </span>
         </div>
       </div>
